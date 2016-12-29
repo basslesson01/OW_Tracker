@@ -1,0 +1,19 @@
+/*
+  My style sheet :)
+*/
+
+body{
+  font-family: 'Raleway', serif;
+}
+
+#main {
+  padding-left:20px;
+}
+
+.profile{
+  padding-left:15px;
+}
+
+.battletag{
+  padding:20px;
+}

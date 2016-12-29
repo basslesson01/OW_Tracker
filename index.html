@@ -2,10 +2,33 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
+    <meta name="author" content="Leon Kim">
     <title>My Overwatch Tracker!</title>
+
+    <!-- AngularJS and my AngularController -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script type="text/javascript" src="js/controller.js"></script>
+
+    <!-- Font = Raleway -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Raleway">
+    <!-- My CSS -->
+    <link rel="stylesheet" href="css/myStyleSheet.css">
   </head>
 
-  <body>
-    <h1>Hello, world!</h1>
+  <body id="page-top" ng-app="OW_Trakcer_App">
+    <header class="intro">
+      <div class="col-md-8 col-md-offset-2">
+        <h1 style="text-align:center;">Overwatch Stat Tracker</h1>
+      </div>
+    </header>
+
+    <br>
+
+    <div id="main" ng-controller="myController">
+      <h2>Profile</h2>
+        <label for="profile" class="profile">BattleTag (replace '#' with '-'): </label>
+        <input type="text" name="battletag" id="battletag" placeholder="i.e. krusher99-1234">
+      <button type="button" id="achivButton" ng-click="testing(battletag)" ng-init="">Search</button>
+    </div> <!-- End of Achievements -->
   </body>
 </html>
