@@ -26,27 +26,33 @@
 
     <div id="main" ng-controller="myController">
       <div class="inputField">
-        <label for="profile" class="profile">BattleTag (replace '#' with '-'): </label>
+        <label>BattleTag (replace '#' with '-'): </label>
         <input type="text" name="battletag" id="battletag" placeholder="i.e. krusher99-1234">
-        <button type="button" id="achivButton" ng-click="getProfile(battletag)">Search</button>
+        <button type="button" id="achivButton" ng-click="setProfile(battletag)">Search</button>
       </div>
     </div>
 
     <br>
 
+    <!-- Gets general info about your profile -->
     <div id="main" ng-controller="myController">
       <h2>Profile</h2>
-      <ul>
-        <li ng-repeat="n in data">
-          {{n}}
-        </li>
-      </ul>
-    </div> <!-- End of Achievements -->
+      <div class="containerProfile">
+        <button type="button" class="displayProfile" ng-click="getProfile()" ng-if="checkSess() != ''">Display Info</button>
+        <ul class="profileStats">
+          <li class="listingProfileStats" ng-repeat="n in profile">
+            <p>{{n.data.profilelevel}</p>
+          </li>
+        </ul>
+      </div>
+    </div> <!-- End of Profile -->
 
     <br>
 
+    <!-- Gets stats for individual heroes -->
     <div id="main" ng-controller="myController">
       <h2>Hero stats</h2>
-    </div>
+    </div> <!-- End of Hero stats -->
+
   </body>
 </html>
