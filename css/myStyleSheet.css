@@ -6,14 +6,25 @@ body{
   font-family: 'Raleway', serif;
 }
 
+.intro {
+  text-align: center;
+}
+
 #main {
-  padding-left:20px;
+  padding-left: 20px;
+}
+#main .inputField{
+  text-align: center;
+  font-size: 18px;
+}
+#main #achivButton {
+  font-size: 18px;
 }
 
 .profile{
-  padding-left:15px;
+  padding-left: 15px;
 }
 
 .battletag{
-  padding:20px;
+  padding: 20px;
 }

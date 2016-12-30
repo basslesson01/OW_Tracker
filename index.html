@@ -18,17 +18,35 @@
   <body id="page-top" ng-app="OW_Trakcer_App">
     <header class="intro">
       <div class="col-md-8 col-md-offset-2">
-        <h1 style="text-align:center;">Overwatch Stat Tracker</h1>
+        <h1>Overwatch Stat Tracker</h1>
       </div>
     </header>
 
     <br>
 
     <div id="main" ng-controller="myController">
-      <h2>Profile</h2>
+      <div class="inputField">
         <label for="profile" class="profile">BattleTag (replace '#' with '-'): </label>
         <input type="text" name="battletag" id="battletag" placeholder="i.e. krusher99-1234">
-      <button type="button" id="achivButton" ng-click="testing(battletag)" ng-init="">Search</button>
+        <button type="button" id="achivButton" ng-click="getProfile(battletag)">Search</button>
+      </div>
+    </div>
+
+    <br>
+
+    <div id="main" ng-controller="myController">
+      <h2>Profile</h2>
+      <ul>
+        <li ng-repeat="n in data">
+          {{n}}
+        </li>
+      </ul>
     </div> <!-- End of Achievements -->
+
+    <br>
+
+    <div id="main" ng-controller="myController">
+      <h2>Hero stats</h2>
+    </div>
   </body>
 </html>
