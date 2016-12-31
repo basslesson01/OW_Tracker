@@ -20,9 +20,14 @@ angular.module('OW_Trakcer_App',[])
         console.log('Battletag is: ' + btag);
         var profilelevel = myFactory.getProfile().level;
         var profileQpWins = myFactory.getProfile().qpWins;
-        var profileCpWins = myFactory.getProfile().cpWins;
         var profileCpPlayed = myFactory.getProfile().cpPlayed;
+        var profileCpWins = myFactory.getProfile().cpWins;
         var profileCpRating = myFactory.getProfile().cpRating;
+        $scope.lvl = profilelevel;
+        $scope.qpwin = profileQpWins;
+        $scope.cpplayed = profileCpPlayed;
+        $scope.cpwin = profileCpWins;
+        $scope.sr = profileCpRating;
         return myFactory.getProfile();
       });
     } //End of getProfile

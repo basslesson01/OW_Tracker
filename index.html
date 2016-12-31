@@ -40,9 +40,11 @@
       <div class="containerProfile">
         <button type="button" class="displayProfile" ng-click="getProfile()" ng-if="checkSess() != ''">Display Info</button>
         <ul class="profileStats">
-          <li class="listingProfileStats" ng-repeat="n in profile">
-            <p>{{n.data.profilelevel}</p>
-          </li>
+          <p>Player level: {{lvl}}</p>
+          <p>Quickplay wins: {{qpwin}}</p>
+          <p>Competitive played: {{cpplayed}}</p>
+          <p>Competitve wins: {{cpwin}}</p>
+          <p>Skill rating: {{sr}}</p>
         </ul>
       </div>
     </div> <!-- End of Profile -->
