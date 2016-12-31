@@ -5,8 +5,8 @@ angular.module('OW_Trakcer_App',[])
       var btag = document.getElementById('battletag').value;
       myFactory.setBattleTag(btag);
       $http.get('https://api.lootbox.eu/pc/us/' + btag + '/profile').then(function(data){
-        overallStatus = data.status;
-        overallStatusCode = data.data.statusCode;
+        overallStatus = data.status; //This returns 200 regardless of if player exists or not
+        overallStatusCode = data.data.statusCode; //This is undefined if player search returns a valid data object
         console.log("data is: " + data);
         console.log(data);
         if(overallStatus == 200 && overallStatusCode == ''){
@@ -29,7 +29,7 @@ angular.module('OW_Trakcer_App',[])
       console.log(btag);
       $http.get('https://api.lootbox.eu/pc/us/' + btag + '/profile').then(function(data){
         console.log('Battletag is: ' + btag);
-        player = data.data.data;
+        player = data.data.data; //Such nesting. Much wow. Would copy&pasta again.
         //console.log('Data.data.data.level: ' + data.data.data.level);
         $scope.lvl = player.level;
         $scope.qpwin = player.games.quick.wins;
