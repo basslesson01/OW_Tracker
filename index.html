@@ -30,6 +30,9 @@
         <input type="text" name="battletag" id="battletag" placeholder="i.e. krusher99-1234">
         <button type="button" id="achivButton" ng-click="setProfile(battletag)">Search</button>
       </div>
+      <div style="text-align:center;">
+        <p>{{message}}</p>
+      </div>
     </div>
 
     <br>
@@ -37,9 +40,9 @@
     <!-- Gets general info about your profile -->
     <div id="main" ng-controller="myController">
       <h2>Profile</h2>
-      <div class="containerProfile">
-        <button type="button" class="displayProfile" ng-click="getProfile()" ng-if="checkSess() != ''">Display Info</button>
-        <ul class="profileStats">
+      <div class="containerProfile" ng-if="checkSess() != ''">
+        <!--<button type="button" class="displayProfile" ng-click="getProfile()" ng-if="checkSess() != ''">Display Info</button>-->
+        <ul class="profileStats" ng-init="getProfile()">
           <p>Player level: {{lvl}}</p>
           <p>Quickplay wins: {{qpwin}}</p>
           <p>Competitive played: {{cpplayed}}</p>

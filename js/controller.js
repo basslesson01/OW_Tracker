@@ -1,36 +1,44 @@
 angular.module('OW_Trakcer_App',[])
   .controller('myController',['$scope','$http','myFactory',function($scope,$http,myFactory) {
+
     $scope.setProfile = function(battletag){
       var btag = document.getElementById('battletag').value;
       myFactory.setBattleTag(btag);
       $http.get('https://api.lootbox.eu/pc/us/' + btag + '/profile').then(function(data){
-        myFactory.setProfile(data.data.data.level, data.data.data.games.quick.wins, data.data.data.games.competitive.wins, data.data.data.games.competitive.played, data.data.data.competitive.rank);
+        overallStatus = data.status;
+        overallStatusCode = data.data.statusCode;
+        console.log("data is: " + data);
+        console.log(data);
+        if(overallStatus == 200 && overallStatusCode == ''){
+          $scope.message = "Stats for " + btag;
+          //myFactory.setProfile(data.data.data.level, data.data.data.games.quick.wins, data.data.data.games.competitive.wins, data.data.data.games.competitive.played, data.data.data.competitive.rank);
+        }
+        else if (overallStatus == 200 && overallStatusCode == 404){
+          $scope.message = "battletag " + btag + " does not exist";
+        }
       });
-    } //End of setProfile
+    } //End of setProfile()
 
     $scope.checkSess = function(){
       var btag = myFactory.getBattleTag();
       return btag;
-    }
+    } //End of checkSess()
 
     $scope.getProfile = function(){
       var btag = myFactory.getBattleTag();
       console.log(btag);
       $http.get('https://api.lootbox.eu/pc/us/' + btag + '/profile').then(function(data){
         console.log('Battletag is: ' + btag);
-        var profilelevel = myFactory.getProfile().level;
-        var profileQpWins = myFactory.getProfile().qpWins;
-        var profileCpPlayed = myFactory.getProfile().cpPlayed;
-        var profileCpWins = myFactory.getProfile().cpWins;
-        var profileCpRating = myFactory.getProfile().cpRating;
-        $scope.lvl = profilelevel;
-        $scope.qpwin = profileQpWins;
-        $scope.cpplayed = profileCpPlayed;
-        $scope.cpwin = profileCpWins;
-        $scope.sr = profileCpRating;
-        return myFactory.getProfile();
+        player = data.data.data;
+        //console.log('Data.data.data.level: ' + data.data.data.level);
+        $scope.lvl = player.level;
+        $scope.qpwin = player.games.quick.wins;
+        $scope.cpplayed = player.games.competitive.played;
+        $scope.cpwin = player.games.competitive.wins;
+        $scope.sr = player.competitive.rank;
+        //return myFactory.getProfile();
       });
-    } //End of getProfile
+    } //End of getProfile()
   }])
 
   .factory('myFactory',function(){
@@ -43,7 +51,7 @@ angular.module('OW_Trakcer_App',[])
       cpWins : '',
       cpPlayed : '',
       cpRating : ''
-    };
+    }; //I don't think I need this, because I can get player data from calling data.property;
     return {
       getBattleTag: function() {
         return battletag.tag;
