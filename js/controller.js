@@ -27,7 +27,7 @@ angular.module('OW_Trakcer_App',[])
     $scope.getProfile = function(){
       var btag = myFactory.getBattleTag();
       $http.get('https://api.lootbox.eu/pc/us/' + btag + '/profile').then(function(data){
-        player = data.data.data; //Such nesting. Much wow. Would copy&pasta again.
+        var player = data.data.data; //Such nesting. Much wow. Would copy&pasta again.
         //console.log('Data.data.data.level: ' + data.data.data.level);
         $scope.lvl = player.level;
         $scope.qpwin = player.games.quick.wins;
@@ -37,6 +37,26 @@ angular.module('OW_Trakcer_App',[])
         //return myFactory.getProfile();
       });
     } //End of getProfile()
+
+    $scope.getHeroStats = function(){
+      var btag = myFactory.getBattleTag();
+      $http.get('https://api.lootbox.eu/pc/us/' + btag + '/competitive/allHeroes/').then(function(data){
+        var player = data;
+        console.log(player);
+        $scope.dmgDone = player.data.DamageDone;
+        $scope.dmgAvg = player.data["DamageDone-Average"];
+        $scope.dmgMost = player.data["DamageDone-MostinGame"];
+        $scope.deaths = player.data.Deaths;
+        $scope.deathsAvg = player.data["Deaths-Average"];
+        $scope.elims = player.data.Eliminations;
+        $scope.elimsAvg = player.data["Eliminations-Average"];
+        $scope.elimsMost = player.data["Eliminations-MostinGame"];
+        $scope.healingDone = player.data.HealingDone;
+        $scope.healingAvg = player.data["HealingDone-Average"];
+        $scope.healingMost = player.data["HealingDone-MostinGame"];
+        //console.log(player);
+      });
+    }
   }])
 
   .factory('myFactory',function(){
