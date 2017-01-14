@@ -54,11 +54,11 @@
 
     <br>
 
-    <!-- Gets stats for individual heroes -->
+    <!-- Gets stats for competitive game mode -->
     <div id="main" ng-controller="myController">
-      <h2>Hero stats</h2>
+      <h2>Hero stats (Competitive)</h2>
       <div class ="containerHeroes" ng-if="checkSess() != ''">
-        <ul class ="heroStats" ng-init="getHeroStats()">
+        <ul class ="heroStats" ng-init="getCompetStats()">
           <!--<h3>Competitive</h3>-->
             <p>Total damage: {{dmgDone}}</p>
             <p>Avg damage: {{dmgAvg}}</p>
@@ -73,7 +73,28 @@
             <p>Most healing in one game: {{healingMost}}</p>
         </ul>
       </div>
-    </div> <!-- End of Hero stats -->
+    </div> <!-- End of Comptetitve stats -->
+
+    <!-- Gets stats for quick play game mode -->
+    <div id="main" ng-controller="myController">
+      <h2>Hero stats (Quickplay)</h2>
+      <div class ="containerHeroes" ng-if="checkSess() != ''">
+        <ul class ="heroStats" ng-init="getQpStats()">
+          <!--<h3>Competitive</h3>-->
+            <p>Total damage: {{dmgDone}}</p>
+            <p>Avg damage: {{dmgAvg}}</p>
+            <p>Most damage in one game: {{dmgMost}}</p>
+            <p>Deaths: {{deaths}}</p>
+            <p>Avg deaths: {{deathsAvg}}</p>
+            <p>Eliminations: {{elims}}</p>
+            <p>Avg eliminations: {{elimsAvg}}</p>
+            <p>Most eliminations in one game: {{elimsMost}}</p>
+            <p>Total healing: {{healingDone}}</p>
+            <p>Avg healing: {{healingAvg}}</p>
+            <p>Most healing in one game: {{healingMost}}</p>
+        </ul>
+      </div>
+    </div> <!-- End of Quickplay stats -->
 
   </body>
 </html>
