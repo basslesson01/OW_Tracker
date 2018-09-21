@@ -2,7 +2,7 @@
 OW_Tracker
 
 ## API
-Made with using 3rd party API
+Made with using 3rd party API (API is dead)
 
 ## Credits
 Leon Kim
